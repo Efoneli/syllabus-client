@@ -92,7 +92,7 @@ export default function CategoryDetails() {
   };
 
   return (
-    <div className="min-h-screen w-full h-full flex flex-col items-center p-4">
+    <div className=" bg-white min-h-screen w-full h-full flex flex-col items-center p-4">
       <h2 className="text-2xl font-bold mb-4">Courses for {category?.name}</h2>
       <div className="mb-4">
         <h2 className="text-2xl font-bold mb-2">{isEditing ? 'Edit Course' : 'Add New Course'}</h2>
@@ -102,7 +102,7 @@ export default function CategoryDetails() {
           placeholder="Title"
           value={isEditing && editCourse ? editCourse.title : newCourse.title}
           onChange={handleInputChange}
-          className="mb-2 p-2 border"
+          className="mb-2 p-2 border text-gray-800"
         />
         <input
           type="text"
@@ -110,7 +110,7 @@ export default function CategoryDetails() {
           placeholder="Prerequisites"
           value={isEditing && editCourse ? editCourse.prerequisites : newCourse.prerequisites}
           onChange={handleInputChange}
-          className="mb-2 p-2 border"
+          className="mb-2 p-2 border text-gray-800"
         />
         <input
           type="text"
@@ -118,7 +118,7 @@ export default function CategoryDetails() {
           placeholder="Image URL"
           value={isEditing && editCourse ? editCourse.imageUrl : newCourse.imageUrl}
           onChange={handleInputChange}
-          className="mb-2 p-2 border"
+          className="mb-2 p-2 border text-gray-800"
         />
         <input
           type="text"
@@ -126,7 +126,7 @@ export default function CategoryDetails() {
           placeholder="Description"
           value={isEditing && editCourse ? editCourse.description : newCourse.description}
           onChange={handleInputChange}
-          className="mb-2 p-2 border"
+          className="mb-2 p-2 border text-gray-800"
         />
         <button
           onClick={isEditing ? handleEditCourse : handleAddCourse}
@@ -140,16 +140,16 @@ export default function CategoryDetails() {
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {category?.courses.map((course) => (
             <li key={course.courseId} className="bg-white rounded-lg shadow-lg p-4">
+              <Link href={`/dashboard/categories/${params.categoryId}/courses/${course.id}`} passHref>
               <Image
                 width={200}
                 height={150}
                 src={course.imageUrl || placeholder}
                 alt={course.title}
-                className=""
+                className="w-full"
               />
-              <Link href={`/dashboard/categories/${params.categoryId}/courses/${course.id}`} passHref>
                 <div>
-                  <h3 className="text-xl font-semibold mt-2">{course.title}</h3>
+                  <h3 className="text-gray-800 text-xl font-semibold mt-2">{course.title}</h3>
                   <p className="text-gray-700 mt-1">{course.description}</p>
                   <p className="text-gray-500 mt-1">Prerequisites: {course.prerequisites}</p>
                 </div>
